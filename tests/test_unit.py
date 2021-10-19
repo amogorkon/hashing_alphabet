@@ -1,7 +1,7 @@
 import use
 
 from hashlib import sha256
-jh = use(use.Path("../src/jackhash/jackhash.py"))
+jh = use(use.Path("../jackhash/__init__.py"))
 
 
 def test_alphabet():
