@@ -40629,13 +40629,13 @@ def represent_num_as_base(num, base):
     return digits[::-1]
 
 
-def hexdigest_as_CJK(string):
+def hexdigest_as_JACK(string):
     if not string:
         return
     return "".join(alphabet[c] for c in represent_num_as_base(int(string, 16), len(alphabet)))
 
 
-def CJK_as_num(string):
+def JACK_as_num(string):
     return sum(len(reverse_alphabet) ** i * reverse_alphabet[x] for i, x in enumerate(reversed(string)))
 
 
