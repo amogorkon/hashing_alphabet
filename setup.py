@@ -1,10 +1,3 @@
-import os
-import sys
-
-here = os.path.abspath(os.path.dirname(__file__))
-src = os.path.join(here, "src/jackhash")
-sys.path.append(src)
-
 from setuptools import find_packages
 from setuptools import setup
 
@@ -13,7 +6,7 @@ meta = {
     "description": "Japanese, ASCII, Chinese, Korean Hash encoding",
     "license": "MIT",
     "url": "https://github.com/amogorkon/jackhash",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "author": "Anselm Kiefner",
     "author_email": "jackhash@anselm.kiefner.de",
     "python_requires": ">=3.6",
@@ -34,8 +27,7 @@ with open("README.md") as f:
     LONG_DESCRIPTION = f.read()
 
 setup(
-    packages=find_packages(where="src"),
-    package_dir = {"": "src/jackhash/"},
+    packages=["jackhash"],
     long_description=LONG_DESCRIPTION,
     long_description_content_type="text/markdown",
     zip_safe=False,
