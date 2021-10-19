@@ -8,4 +8,5 @@ However, the chinese, japanese and korean alphabets are *huge* in comparison, ye
 I curated all those different alphabets into one (japanese would only add 100 single characters to the chinese and korean alphabets and the license would be GPL3, so I left that one out actually) - coming up with a combined alphabet of 27642 characters, which allows to boil down the length of a sha256 digest down to just 18 characters which you can freely send via chat or put in Python 3 code files since they are unicode by default.
 
 ## Licensing
-Both Chinese ( and Korean alphabets are licensed under MIT
+Both Chinese ( https://github.com/tsroten/zhon/blob/develop/zhon/cedict/all.py ) 
+ and Korean ( https://github.com/arcsecw/wubi/blob/master/wubi/cw.py ) alphabets are licensed under MIT.
