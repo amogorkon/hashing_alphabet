@@ -1,4 +1,4 @@
-# Japanese, ASCII, Chinese, Korean - Hash encoding
+# JÄCKhash - Japanese, ASCII (+non-latin), Chinese, Korean Hash encoding
 Ever felt sha256 hexdigests are way too long? We have unicode everywhere now, right? Why not use the full range of characters of unicode to encode the hash?
 Well, there are some potential issues to take into consideration.
 
