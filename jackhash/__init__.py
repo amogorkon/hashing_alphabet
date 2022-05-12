@@ -1,7 +1,13 @@
+"""
+The JACK hash alphabet. 
+For details see https://pypi.org/project/jackhash
+"""
+import use
+
 # korean characters: https://github.com/arcsecw/wubi/blob/master/wubi/cw.py
 # chinese characters: https://github.com/tsroten/zhon/blob/develop/zhon/cedict/all.py
 
-__version__ = "2.0.0"
+__version__ = "5"
 
 chinese_characters = """○
 、
@@ -13028,7 +13034,9 @@ chinese_characters = """○
 龠
 龡
 龢
-龤""".split("\n")
+龤""".split(
+    "\n"
+)
 
 korean_characters = """←
 ↑
@@ -40606,17 +40614,28 @@ korean_characters = """←
 﨤
 﨧
 﨨
-﨩
-""".split("\n")
+﨩""".split(
+    "\n"
+)
 
+# to avoid possible (albeit extremely rare) collisions with regular hexdigests all digits and ABCDEF are removed
+# to avoid problems with selection for copy&paste, all special characters in ASCII are also removed
+ascii_characters = list(
+    "ghijklmnopqrstuvwxyzGHIJKLMNOPQRSTUVWXYZ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫȬȭȮȯȰȱȲȳȴȵȶȷȸȹȺȻȼȽȾȿɀɁɂɃɄɅɆɇɈɉɊɋɌɍɎɏɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɩɪɫɬɭɮɯɰɱɲɳɴɵɶɷɸɹɺɻɼɽɾɿʀʁʂʃʄʅʆʇʈʉʊʋʌʍʎʏʐʑʒʓʔʕʖʗʘʙʚʛʜʝʞʟʠʡʢʣʤʥʦʧʨʩʪʫʬʭʮʯʰʱʲʳʴʵʶʷʸʹʺʻʼʽʾʿˀˁ˂˃˄˅ˆˇˈˉˊˋˌˍˎˏːˑ˒˓˔˕˖˗˘˙˚˛˜˝˞˟ˠˡˢˣˤ˥˦˧˨˩˪˫ˬ˭ˮ˯˰˱˲˳˴˵"
+)
 
-ascii_characters = list("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ¡¢£¤¥¦§¨©ª«¬®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿĀāĂăĄąĆćĈĉĊċČčĎďĐđĒēĔĕĖėĘęĚěĜĝĞğĠġĢģĤĥĦħĨĩĪīĬĭĮįİıĲĳĴĵĶķĸĹĺĻļĽľĿŀŁłŃńŅņŇňŉŊŋŌōŎŏŐőŒœŔŕŖŗŘřŚśŜŝŞşŠšŢţŤťŦŧŨũŪūŬŭŮůŰűŲųŴŵŶŷŸŹźŻżŽžſƀƁƂƃƄƅƆƇƈƉƊƋƌƍƎƏƐƑƒƓƔƕƖƗƘƙƚƛƜƝƞƟƠơƢƣƤƥƦƧƨƩƪƫƬƭƮƯưƱƲƳƴƵƶƷƸƹƺƻƼƽƾƿǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔǕǖǗǘǙǚǛǜǝǞǟǠǡǢǣǤǥǦǧǨǩǪǫǬǭǮǯǰǱǲǳǴǵǶǷǸǹǺǻǼǽǾǿȀȁȂȃȄȅȆȇȈȉȊȋȌȍȎȏȐȑȒȓȔȕȖȗȘșȚțȜȝȞȟȠȡȢȣȤȥȦȧȨȩȪȫȬȭȮȯȰȱȲȳȴȵȶȷȸȹȺȻȼȽȾȿɀɁɂɃɄɅɆɇɈɉɊɋɌɍɎɏɐɑɒɓɔɕɖɗɘəɚɛɜɝɞɟɠɡɢɣɤɥɦɧɨɩɪɫɬɭɮɯɰɱɲɳɴɵɶɷɸɹɺɻɼɽɾɿʀʁʂʃʄʅʆʇʈʉʊʋʌʍʎʏʐʑʒʓʔʕʖʗʘʙʚʛʜʝʞʟʠʡʢʣʤʥʦʧʨʩʪʫʬʭʮʯʰʱʲʳʴʵʶʷʸʹʺʻʼʽʾʿˀˁ˂˃˄˅ˆˇˈˉˊˋˌˍˎˏːˑ˒˓˔˕˖˗˘˙˚˛˜˝˞˟ˠˡˢˣˤ˥˦˧˨˩˪˫ˬ˭ˮ˯˰˱˲˳˴˵˶˷˸˹˺˻˼˽˾")
-# ascii chars aren't really needed for the number of characters but highlighting algos break on special chars
 # emojis only cause interoperability issues
 # japanese alphabet would only add 100 individual chars, not worth the trouble (and GPL is prohibitive)
-alphabet = ascii_characters + chinese_characters + korean_characters
-alphabet = sorted(list(set(alphabet)))
-reverse_alphabet = {c: i for i, c in enumerate(alphabet)}
+class AlphabetAccess:
+    # to avoid printing the full alphabet to stderr whenever there's a problem
+    global ascii_characters
+    global chinese_characters
+    global korean_characters
+    alphabet = sorted(list(set(ascii_characters + chinese_characters + korean_characters)))
+    reverse_alphabet = {c: i for i, c in enumerate(alphabet)}
+    del ascii_characters
+    del chinese_characters
+    del korean_characters
 
 
 def represent_num_as_base(num, base):
@@ -40632,12 +40651,25 @@ def represent_num_as_base(num, base):
 def hexdigest_as_JACK(string):
     if not string:
         return
-    return "".join(alphabet[c] for c in represent_num_as_base(int(string, 16), len(alphabet)))
+    return "".join(
+        AlphabetAccess.alphabet[c]
+        for c in represent_num_as_base(int(string, 16), len(AlphabetAccess.alphabet))
+    )
 
 
-def JACK_as_num(string):
-    return sum(len(reverse_alphabet) ** i * reverse_alphabet[x] for i, x in enumerate(reversed(string)))
+def JACK_as_num(string: str):
+    if isinstance(string, bytes):
+        string = string.decode()
+    string = "".join(string.split())
+    return sum(
+        len(AlphabetAccess.reverse_alphabet) ** i * AlphabetAccess.reverse_alphabet[x]
+        for i, x in enumerate(reversed(string))
+    )
 
 
 def num_as_hexdigest(num):
-    return hex(num)[2:]
+    return str.rjust(hex(num)[2:], 64, "0")
+
+
+def is_JACK(H):
+    return all(c in AlphabetAccess.alphabet for c in H)
