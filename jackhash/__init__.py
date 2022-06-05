@@ -2,7 +2,6 @@
 The JACK hash alphabet. 
 For details see https://pypi.org/project/jackhash
 """
-import use
 
 # korean characters: https://github.com/arcsecw/wubi/blob/master/wubi/cw.py
 # chinese characters: https://github.com/tsroten/zhon/blob/develop/zhon/cedict/all.py
